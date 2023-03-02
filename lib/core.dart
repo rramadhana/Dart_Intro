@@ -18,6 +18,7 @@ void menu(String? username) {
   print('1. Kelompok Kami');
   print('2. Penjumlahan Angka');
   print('3. Pengurangan Angka');
+  print('4. Keluar');
   print('Pilih menu : ');
   int? menu = int.parse(stdin.readLineSync()!);
   switch (menu) {
@@ -31,6 +32,10 @@ void menu(String? username) {
       break;
     case 3:
       pengurangan();
+      break;
+    case 4:
+      print('Terima kasih telah menggunakan program ini');
+      exit(0);
       break;
     default:
       print('Pilihan anda tidak ada di menu');
@@ -60,5 +65,24 @@ void dataKelompok() {
   print('Kelompok Kami');
   print(' Fahmi Malik Namus Akbar - 123200002');
   print(' Giventheo Khemides - 123200063');
-  print(' Raynicka Ramadhan - 12320');
+  print(' Raynicka Ramadhana - 123200150');
+}
+
+void main() {
+  bool loggedIn = false;
+  while (!loggedIn) {
+    print('Silahkan login terlebih dahulu');
+    print('Username : ');
+    String? username = stdin.readLineSync();
+    print('Password : ');
+    String? password = stdin.readLineSync();
+    loggedIn = login(username, password);
+    if (!loggedIn) {
+      print('Username atau password salah, silahkan coba lagi');
+    } else {
+      while (true) {
+        menu(username);
+      }
+    }
+  }
 }
